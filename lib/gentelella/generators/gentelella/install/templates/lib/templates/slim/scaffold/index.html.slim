@@ -1,0 +1,20 @@
+.x_panel
+  .x_content
+    .pull-right
+      ul.list-inline
+        li = link_to 'New', :new_<%= singular_table_name %>, class: 'btn-new'
+    .clearfix
+    table.table.table-hover
+      thead
+        tr
+  <%- for attribute in attributes -%>
+          th <%= attribute.human_name
+  <%- end -%>
+          th
+      tbody
+        - @<%= plural_table_name %>.each do | <%= singular_table_name %> |
+          tr
+  <%- for attribute in attributes -%>
+            td = <%= singular_table_name %>.<%= attribute.name %>
+  <%- end -%>
+            td = link_to 'Show', @<%= singular_table_name %>, class: 'btn-show'
